@@ -26,14 +26,14 @@ func Login(c *gin.Context) {
 		return
 	}
 
-	c.SetCookie("token", token, 3600, "/", "", 1, false, true)
+	c.SetCookie("token", token, 3600, "/", "", false, true)
 	c.JSON(200, gin.H{
 		"message": "login success",
 	})
 }
 
 func Logout(c *gin.Context) {
-	c.SetCookie("token", "", -1, "/", "", 1, false, true)
+	c.SetCookie("token", "", -1, "/", "", false, true)
 	c.JSON(200, gin.H{
 		"message": "logout success",
 	})
@@ -50,7 +50,7 @@ func RefreshToken(c *gin.Context) {
 		return
 	}
 
-	c.SetCookie("token", token, 3600, "/", "", 1, false, true)
+	c.SetCookie("token", token, 3600, "/", "", false, true)
 	c.JSON(200, gin.H{
 		"message": "refresh success",
 	})
